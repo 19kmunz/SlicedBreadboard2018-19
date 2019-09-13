@@ -23,11 +23,11 @@ import static com.disnodeteam.dogecv.detectors.roverrukus.SamplingOrderDetector.
 /**
  * Created by 22tjiang on 3/1/19.
  */
-
+@TeleOp(name = "TianaTests", group = "Test")
 public class TianaTestDoc extends LinearOpMode {
     private Robot2017 robot;
     private ElapsedTime runtime = new ElapsedTime();
-    private GoldAlignDetector detector;
+    //private GoldAlignDetector detector;
 
     public void runOpMode() throws InterruptedException {
         robot = new Robot2017(true, StartPosition.marker);
@@ -44,13 +44,13 @@ public class TianaTestDoc extends LinearOpMode {
 
         while (opModeIsActive()) {
             robot.composeIMUTelemetry();
-            if(robot.isHooked) {
+            if (robot.isHooked) {
                 unlatch();
             }
 
             robot.gyrodrive.turn(0.7, 180);
 
-            if(robot.startPosition == StartPosition.crater){
+            if (robot.startPosition == StartPosition.crater) {
                 int angleToMarker1 = 135;
                 int angleToMarker2 = 45;
                 int angleToCrater = -135;
@@ -67,17 +67,13 @@ public class TianaTestDoc extends LinearOpMode {
                 deployMarker();
 
                 robot.gyrodrive.vertical(0.7, distToCrater1, angleToCrater);
-                robot.gyrodrive.
-
-
-
 
 
             }
 
 
-
         }
+    }
 
 
 
@@ -155,12 +151,14 @@ public class TianaTestDoc extends LinearOpMode {
         TimeUnit.MILLISECONDS.sleep(t);
     }
 
+    /*
     public android.hardware.Camera initVision() {
         android.hardware.Camera camera = android.hardware.Camera.open(0);
 
         return camera;
         //make sure to camera.release() after using
     }
+
 
     public void initDetector(){
         telemetry.addData("Status", "DogeCV 2018.0 - Sampling Order Example");
@@ -181,6 +179,7 @@ public class TianaTestDoc extends LinearOpMode {
 
         detector.enable();
     }
+    */
 }
 
 
